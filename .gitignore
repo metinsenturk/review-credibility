@@ -107,5 +107,5 @@ venv.bak/
 config.yaml
 
 # data
-data/
-!*.gitkeep
+data/*
+!.gitkeep

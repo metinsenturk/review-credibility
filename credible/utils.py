@@ -6,7 +6,7 @@ def check_json(filepath):
     """
     Validates if the file is json or not.
     """
-    with open(filepath, 'r', encoding="utf8") as stream:
+    with open(filepath, 'rb') as stream:
         try:
             json.load(stream)
             return True
@@ -35,7 +35,7 @@ def convert_file_to_json(read_filepath, write_filepath):
 
 def progressbar(it, prefix="", size=60, file=sys.stdout):
     """
-    Progress bar function for long processes. 
+    Progress bar function for long processes.
 
     it      : iterator
     prefix  : custom string to add on progress bar.
@@ -43,7 +43,7 @@ def progressbar(it, prefix="", size=60, file=sys.stdout):
     file    : where the progress bar runs.
 
     For more information, check the original answer from
-    stackoverflow, https://stackoverflow.com/a/34482761. 
+    stackoverflow, https://stackoverflow.com/a/34482761.
     """
     count = len(it)
 
@@ -58,3 +58,21 @@ def progressbar(it, prefix="", size=60, file=sys.stdout):
         show(i+1)
     file.write("\n")
     file.flush()
+
+
+def progressbar2(total, progress):
+    """
+    Displays or updates a console progress bar.
+
+    Original source: https://stackoverflow.com/a/15860757/1391441
+    """
+    barLength, status = 20, ""
+    progress = float(progress) / float(total)
+    if progress >= 1.:
+        progress, status = 1, "\r\n"
+    block = int(round(barLength * progress))
+    text = "\r[{}] {:.0f}% {}".format(
+        "#" * block + "-" * (barLength - block), round(progress * 100, 0),
+        status)
+    sys.stdout.write(text)
+    sys.stdout.flush()
