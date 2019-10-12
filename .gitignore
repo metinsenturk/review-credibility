@@ -109,3 +109,6 @@ config.yaml
 # dev envıronments
 .vscode/
 .vscode/*
+# data
+data/*
+!.gitkeep
