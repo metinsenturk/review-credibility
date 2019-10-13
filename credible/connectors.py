@@ -5,15 +5,19 @@ from .config import get_config
 
 def connect_to_methini():
     config = get_config()
-    password = config['mssql_password']
+    con = config['con']
 
     # db params
     params = urllib.parse.quote_plus(
-        r"Driver={SQL Server};"
-        r"Server=tcp:methini.database.windows.net,1433;"
-        r"Database=YelpDB;Uid=methini-admin@methini;"
-        r"Pwd=" + password + ";Encrypt=yes;"
-        r"TrustServerCertificate=no;Connection Timeout=30;"
+        "Driver={driver};Server={server};Database={db};\
+            Uid={uid};Pwd={pwd};Encrypt=yes;TrustServerCertificate=no;\
+                Connection Timeout=30;".format(
+            driver=con['driver'],
+            server=con['server'],
+            db=con['database'],
+            uid=con['uid'],
+            pwd=con['pwd']
+        )
     )
 
     # db connect
