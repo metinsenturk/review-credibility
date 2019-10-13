@@ -60,7 +60,7 @@ def progressbar(it, prefix="", size=60, file=sys.stdout):
     file.flush()
 
 
-def progressbar2(total, progress):
+def progressbar2(total, progress, prefix=""):
     """
     Displays or updates a console progress bar.
 
@@ -71,8 +71,8 @@ def progressbar2(total, progress):
     if progress >= 1.:
         progress, status = 1, "\r\n"
     block = int(round(barLength * progress))
-    text = "\r[{}] {:.0f}% {}".format(
-        "#" * block + "-" * (barLength - block), round(progress * 100, 0),
+    text = "\r{} [{}] {:.0f}% {}".format(
+        prefix, "#" * block + "-" * (barLength - block), round(progress * 100, 0),
         status)
     sys.stdout.write(text)
     sys.stdout.flush()

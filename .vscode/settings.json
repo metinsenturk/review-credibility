@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\Nandini\\Anaconda3\\python.exe",
+    "python.pythonPath": "C:\\Anaconda\\envs\\credenv\\python.exe",
     "python.linting.pylintEnabled": false,
     "python.linting.pycodestyleEnabled": true,
     "python.linting.enabled": true

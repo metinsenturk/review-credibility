@@ -50,17 +50,18 @@ class Blob():
         return blob
 
     def upload_file(self, blob_name, full_path_to_file,
-                    content_type='application/octet-stream', use_stream=True):
+                    content_type='application/octet-stream', use_stream=True,
+                    callback=None):
         content_setting = ContentSettings(content_type=content_type)
 
         if not use_stream:
             uploaded = self.block_blob_service.create_blob_from_path(
                 self.container_name, blob_name, full_path_to_file,
-                content_settings=content_setting)
+                content_settings=content_setting, progress_callback=callback)
         else:
             uploaded = self.block_blob_service.create_blob_from_stream(
                 self.container_name, blob_name, full_path_to_file,
-                content_settings=content_setting)
+                content_settings=content_setting, progress_callback=callback)
         return uploaded
 
     def generate_sas_for_container(self, days=1, **kwargs):
