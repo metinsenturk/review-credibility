@@ -6,12 +6,13 @@ def get_config(filepath=None):
     """
     Get the config fie and returns it as dictionary.
     """
+    config_filepath = os.path.join(os.pardir, 'config.yaml')
     # get config
     if filepath is not None:
         _filepath = filepath
     else:
         _filepath = os.path.abspath(
-            os.path.join(os.path.dirname(__file__), "../config.yaml"))
+            os.path.join(os.path.dirname(__file__), config_filepath))
 
     # load config
     with open(_filepath, 'r') as stream:

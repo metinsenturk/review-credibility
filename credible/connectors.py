@@ -5,7 +5,7 @@ from .config import get_config
 
 
 def connect_to_sqlite():
-    sqlite_filepath = os.path.join(os.path.dirname(__file__), "../db.sqlite3")
+    sqlite_filepath = os.path.join(os.pardir, 'db.sqlite3')
     engine = create_engine('sqlite:///{}'.format(sqlite_filepath))
 
     return engine
