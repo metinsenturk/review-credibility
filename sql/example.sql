@@ -22,3 +22,7 @@ END
 -- Get a list of databases
 SELECT name FROM sys.databases
 GO
+
+-- get count of photos
+SELECT count(*) FROM
+Photos
