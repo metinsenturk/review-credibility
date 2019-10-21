@@ -11,11 +11,12 @@ class Etl:
         self.Session = Session
         self.engine = engine
 
-    def create_all(self):
+    def create_all(self, drop_all=True):
         """
         Create all tables.
         """
-        self.Base.metadata.drop_all(bind=self.engine)
+        if drop_all:
+            self.Base.metadata.drop_all(bind=self.engine)
         self.Base.metadata.create_all(bind=self.engine)
 
     def insert(self, obj_list, batch_size=-1):
