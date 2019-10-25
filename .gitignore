@@ -116,3 +116,4 @@ config.yaml
 # data
 data/*
 !.gitkeep
+pickles/

@@ -1,6 +1,22 @@
+import os
 import sys
 import json
+import pickle
 
+def pickle_dump(obj, pickle_name):
+    filepath = os.path.join(
+        os.path.join(os.pardir, 'pickles'), f'{pickle_name}.pkl')
+    
+    with open(filepath, 'wb') as handle:
+        pickle.dump(obj, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+def pickle_load(pickle_name):
+    filepath = os.path.join(
+        os.path.join(os.pardir, 'pickles'), f'{pickle_name}.pkl')
+    
+    with open(filepath, 'rb') as handle:
+        obj = pickle.load(handle)
+    return obj
 
 def check_json(filepath):
     """
