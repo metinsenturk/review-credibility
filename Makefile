@@ -1,3 +1,13 @@
+help:
+	@echo
+	@echo "Credible - Help" :
+	@echo "====================================" 
+	@echo "clean-pyc" 					: cleanup the python cache files for .py and jupyter notebooks.
+	@echo "clean-build" 				: cleanup the build files
+	@echo "create-linguistic-features" 	: create linguistic features for reviews..
+	@echo "create_env" 					: create the default environment for this project.
+	@echo
+
 hello:
 	@echo Hi!
 
@@ -25,6 +35,7 @@ create_env: requirements.txt
 	@echo Starting ...
 	python3 -m venv "./venv/credenv"
 	@echo Environment created. Activating environment ...
+	# ; and \ is important for terminal to keep the history of execution.
 	\
 	source ./venv/credenv/bin/activate; \
 	pip install --upgrade pip; \
