@@ -90,9 +90,15 @@ class Nlp(object):
         return statistics.mean(len(i) for i in self.words)
 
     def ratio_lexical(self):
+        """
+        lexicality score of a text. the higher the better.
+        """
         return len(set(self.words)) / len(self.words)
 
     def ratio_content(self):
+        """
+        content amount of a text. the higher the better.
+        """
         stop_count = len(list(i for i in self.doc if i.is_stop))
         return (len(self.words) - stop_count) / len(self.words)
 
