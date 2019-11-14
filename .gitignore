@@ -117,3 +117,4 @@ config.yaml
 data/*
 !.gitkeep
 pickles/
+*.sqlite3
