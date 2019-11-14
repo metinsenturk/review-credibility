@@ -1,16 +1,24 @@
 import os
 import urllib
 from sqlalchemy import create_engine, exc
-from .config import get_config
+from credible.config import get_config
 
 
-def connect_to_sqlite():
-    sqlite_filepath = os.path.join(os.pardir, 'db.sqlite3')
+def connect_to_sqlite(name=None):
+    """
+    Local Sqlite3 database connector.
+    """
+    if name is None:
+        name = 'db'
+    sqlite_filepath = os.path.join(os.pardir, f'{name}.sqlite3')
     engine = create_engine('sqlite:///{}'.format(sqlite_filepath))
 
     return engine
 
 def connect_to_methini():
+    """
+    Azure SQL server database connector.
+    """
     config = get_config()
     con = config['con']
 
